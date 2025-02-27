@@ -105,10 +105,10 @@ namespace api_filmes_senai.Repositories
         {
             try
             {
-            List<Filme> listaPorGenero = _context.Filme.Include(g => g.Genero)
-                    .Where(f => f.IdGenero == IdGenero)
-                    .ToList();
-            return listaPorGenero; 
+                List<Filme> listaDeFilme = _context.Filme.Include(g => g.Genero)
+                        .Where(f => f.IdGenero == IdGenero)
+                        .ToList();
+                return listaDeFilme;
             }
             catch (Exception)
             {

@@ -8,6 +8,7 @@ namespace api_filmes_senai.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public class FilmeController : ControllerBase
     {
         private readonly IFilmeRepository _filmeRepository;
@@ -87,10 +88,20 @@ namespace api_filmes_senai.Controllers
             }
         }
 
-        [HttpGet("[IdGenero]")]
-        public IActionResult Get(Guid IdGenero);
+        [HttpGet("ListarPorGenero/{id}")]
+        public IActionResult GetByGenero(Guid id)
         {
-            
+            try
+            {
+                List<Filme> ListaPorGenero = _filmeRepository.ListarPorGenero(id);
+                return Ok(ListaPorGenero);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-    }
 
+    }
+}
+        
