@@ -1,5 +1,6 @@
 ﻿using api_filmes_senai.Domains;
 using api_filmes_senai.Interface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,11 @@ namespace api_filmes_senai.Controllers
             _generoRepository = generoRepository;
         }
 
+        /// <summary>
+        /// Endpoint para Listar um Gênero 
+        /// </summary>
+        /// <param name="id">Id do Gênero Listado</param>
+        /// <returns>Gênero Listado</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -29,6 +35,13 @@ namespace api_filmes_senai.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        /// <summary>
+        /// Endpoint para Cadastrar um Gênero 
+        /// </summary>
+        /// <param name="id">Id do Gênero Cadastrado</param>
+        /// <returns>Gênero Cadastrado</returns>
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Genero novoGenero)
         {
@@ -43,6 +56,13 @@ namespace api_filmes_senai.Controllers
             }
         }
 
+        
+        /// <summary>
+        /// Endpoint para buscar um Gênero pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do Gênero buscado</param>
+        /// <returns>Gênero Buscado</returns>
+
         [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {
@@ -56,7 +76,11 @@ namespace api_filmes_senai.Controllers
                 return BadRequest(e.Message);
             }
         }
-
+        /// <summary>
+        /// Endpoint para Deletar um Gênero 
+        /// </summary>
+        /// <param name="id">Id do Gênero Deletado</param>
+        /// <returns>Gênero Deletado</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)
         {
@@ -71,6 +95,11 @@ namespace api_filmes_senai.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint para Atualizar um Gênero 
+        /// </summary>
+        /// <param name="id">Id do Gênero Atualizado</param>
+        /// <returns>Gênero Atualizado</returns>
         [HttpPut("{id}")]
         public IActionResult Put(Guid id, Genero genero)
         {

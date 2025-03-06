@@ -17,6 +17,12 @@ namespace api_filmes_senai.Controllers
             _filmeRepository = filmeRepository;
         }
 
+
+        /// <summary>
+        /// Endpoint para Listar um Filme 
+        /// </summary>
+        /// <param name="id">Id do Filme Listado</param>
+        /// <returns>Filme Listado</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -31,6 +37,11 @@ namespace api_filmes_senai.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint para Cadastrar um Filme 
+        /// </summary>
+        /// <param name="id">Id do Filme Cadastrado</param>
+        /// <returns>Filme Cadastrado</returns>
         [HttpPost]
         public IActionResult Post(Filme novoFilme)
         {
@@ -45,6 +56,11 @@ namespace api_filmes_senai.Controllers
             }
         }
 
+        /// <summary>
+        /// Endpoint para buscar um Filme pelo seu Id
+        /// </summary>
+        /// <param name="id">Id do Filme buscado</param>
+        /// <returns>FIlme Buscado</returns>
         [HttpGet("BuscarPorId/{id}")]
         public IActionResult GetById(Guid id)
         {

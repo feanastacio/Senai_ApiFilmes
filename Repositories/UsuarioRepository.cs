@@ -8,7 +8,7 @@ namespace api_filmes_senai.Repositories
     public class UsuarioRepository : IUsuarioRepository
     {
         private readonly Filme_Context _context;
-        public UsuarioRepository(Filme_Context context) 
+        public UsuarioRepository(Filme_Context context)
         {
             _context = context;
         }
@@ -19,8 +19,8 @@ namespace api_filmes_senai.Repositories
                 Usuario usuarioBuscado = _context.Usuario.FirstOrDefault(u => u.Email == email)!;
                 if (usuarioBuscado != null)
                 {
-                   bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha!);
-                    if (confere) 
+                    bool confere = Criptografia.CompararHash(senha, usuarioBuscado.Senha!);
+                    if (confere)
                     {
                         return usuarioBuscado;
                     }
@@ -38,9 +38,9 @@ namespace api_filmes_senai.Repositories
         {
             Usuario usuarioBuscado = _context.Usuario.Find(id)!;
 
-            if (usuarioBuscado != null) 
-            { 
-                return usuarioBuscado; 
+            if (usuarioBuscado != null)
+            {
+                return usuarioBuscado;
             }
             return null!;
         }
